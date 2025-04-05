@@ -32,6 +32,7 @@ import {
   Award, 
   BookMarked,
   Bell,
+  MessageSquare,
   Star
 } from "lucide-react";
 import { courses, userProgress, certificates, users } from "@/data/mockData";
