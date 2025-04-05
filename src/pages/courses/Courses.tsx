@@ -31,8 +31,8 @@ import { Course } from "@/types";
 export default function Courses() {
   const [filteredCourses, setFilteredCourses] = useState<Course[]>(courses);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [selectedLevel, setSelectedLevel] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedLevel, setSelectedLevel] = useState<string>("all");
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [ratings, setRatings] = useState<string[]>([]);
   
@@ -51,12 +51,12 @@ export default function Courses() {
     }
     
     // Apply category filter
-    if (selectedCategory) {
+    if (selectedCategory && selectedCategory !== "all") {
       results = results.filter(course => course.category === selectedCategory);
     }
     
     // Apply level filter
-    if (selectedLevel) {
+    if (selectedLevel && selectedLevel !== "all") {
       results = results.filter(course => course.level === selectedLevel);
     }
     
@@ -122,7 +122,7 @@ export default function Courses() {
                       <SelectValue placeholder="All Categories" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All Categories</SelectItem>
+                      <SelectItem value="all">All Categories</SelectItem>
                       {categories.map((category) => (
                         <SelectItem key={category} value={category}>
                           {category}
@@ -143,7 +143,7 @@ export default function Courses() {
                       <SelectValue placeholder="All Levels" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All Levels</SelectItem>
+                      <SelectItem value="all">All Levels</SelectItem>
                       <SelectItem value="beginner">Beginner</SelectItem>
                       <SelectItem value="intermediate">Intermediate</SelectItem>
                       <SelectItem value="advanced">Advanced</SelectItem>
@@ -196,8 +196,8 @@ export default function Courses() {
                 
                 <Button variant="outline" className="w-full" onClick={() => {
                   setSearchTerm("");
-                  setSelectedCategory("");
-                  setSelectedLevel("");
+                  setSelectedCategory("all");
+                  setSelectedLevel("all");
                   setPriceRange([0, 100]);
                   setRatings([]);
                 }}>
@@ -271,8 +271,8 @@ export default function Courses() {
                 </p>
                 <Button onClick={() => {
                   setSearchTerm("");
-                  setSelectedCategory("");
-                  setSelectedLevel("");
+                  setSelectedCategory("all");
+                  setSelectedLevel("all");
                   setPriceRange([0, 100]);
                   setRatings([]);
                 }}>
