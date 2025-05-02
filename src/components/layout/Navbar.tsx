@@ -1,8 +1,8 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, BookOpen, User } from "lucide-react";
+import { Menu, X, LogIn, BookOpen, User, LayoutDashboard } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,9 +13,22 @@ import SearchBox from "@/components/search/SearchBox";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // For demo purposes
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  
+  // Check if user is logged in when component mounts
+  useEffect(() => {
+    const currentUser = localStorage.getItem("currentUser");
+    setIsLoggedIn(!!currentUser);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
 
   return (
     <header className="border-b sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -68,7 +81,7 @@ export default function Navbar() {
                   <DropdownMenuItem asChild>
                     <Link to="/profile">Profile</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setIsLoggedIn(false)}>
+                  <DropdownMenuItem onClick={handleLogout}>
                     Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -153,9 +166,10 @@ export default function Navbar() {
                   <div className="space-y-1">
                     <Link
                       to="/dashboard"
-                      className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent/10"
+                      className="flex items-center px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent/10"
                       onClick={toggleMenu}
                     >
+                      <LayoutDashboard className="mr-2 h-5 w-5" />
                       Dashboard
                     </Link>
                     <Link
@@ -168,7 +182,7 @@ export default function Navbar() {
                     <button
                       className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent/10"
                       onClick={() => {
-                        setIsLoggedIn(false);
+                        handleLogout();
                         toggleMenu();
                       }}
                     >
