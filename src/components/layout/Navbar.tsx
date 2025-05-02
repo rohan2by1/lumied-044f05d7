@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogIn, BookOpen, User, LayoutDashboard } from "lucide-react";
@@ -10,23 +10,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import SearchBox from "@/components/search/SearchBox";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { user, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
-  // Check if user is logged in when component mounts
-  useEffect(() => {
-    const currentUser = localStorage.getItem("currentUser");
-    setIsLoggedIn(!!currentUser);
-  }, []);
-
   const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    setIsLoggedIn(false);
+    logout();
     navigate("/");
   };
 
@@ -67,7 +61,7 @@ export default function Navbar() {
               <SearchBox />
             </div>
 
-            {isLoggedIn ? (
+            {isAuthenticated ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -162,7 +156,7 @@ export default function Navbar() {
           <div className="pt-4 pb-3 border-t border-border">
             <div className="flex items-center px-4">
               <div className="ml-3">
-                {isLoggedIn ? (
+                {isAuthenticated ? (
                   <div className="space-y-1">
                     <Link
                       to="/dashboard"

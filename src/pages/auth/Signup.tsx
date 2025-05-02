@@ -13,8 +13,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { useToast } from "@/components/ui/use-toast";
 import Layout from "@/components/layout/Layout";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Signup() {
   const [name, setName] = useState("");
@@ -22,32 +22,19 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { toast } = useToast();
+  const { signup } = useAuth();
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      toast({
-        title: "Account created!",
-        description: "You've successfully created your account.",
-      });
-      
-      // In a real app, we'd create the user in the database
-      const newUser = {
-        id: Date.now().toString(),
-        name,
-        email,
-        role: "student"
-      };
-      
-      localStorage.setItem("currentUser", JSON.stringify(newUser));
+    const success = await signup(name, email, password);
+    
+    if (success) {
       navigate("/dashboard");
-      
-      setIsLoading(false);
-    }, 1500);
+    }
+    
+    setIsLoading(false);
   };
 
   return (

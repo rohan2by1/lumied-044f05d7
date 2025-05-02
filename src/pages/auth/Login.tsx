@@ -14,8 +14,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
-import { useToast } from "@/components/ui/use-toast";
 import Layout from "@/components/layout/Layout";
+import { useAuth } from "@/contexts/AuthContext";
 import { users } from "@/data/mockData";
 
 export default function Login() {
@@ -23,41 +23,34 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { toast } = useToast();
+  const { login } = useAuth();
+
+  // Initialize users in localStorage if not present
+  useState(() => {
+    if (!localStorage.getItem("users")) {
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+  });
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
-    // Simulate API call
-    setTimeout(() => {
+    
+    const success = await login(email, password);
+    
+    if (success) {
+      // Find the user to determine their role
       const user = users.find(u => u.email === email);
       
-      if (user && password === "password") { // Simple mock authentication
-        toast({
-          title: "Login successful!",
-          description: `Welcome back, ${user.name}!`,
-        });
-        
-        // In a real app, we'd set authentication state/context
-        localStorage.setItem("currentUser", JSON.stringify(user));
-        
-        // Redirect based on role
-        if (user.role === "admin") {
-          navigate("/admin");
-        } else {
-          navigate("/dashboard");
-        }
+      // Redirect based on role
+      if (user && user.role === "admin") {
+        navigate("/admin");
       } else {
-        toast({
-          variant: "destructive",
-          title: "Login failed",
-          description: "Invalid email or password. Please try again.",
-        });
+        navigate("/dashboard");
       }
-      
-      setIsLoading(false);
-    }, 1500);
+    }
+    
+    setIsLoading(false);
   };
 
   return (
