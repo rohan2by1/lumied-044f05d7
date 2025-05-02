@@ -2,14 +2,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Search, Menu, X, LogIn, BookOpen, User } from "lucide-react";
+import { Menu, X, LogIn, BookOpen, User } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
+import SearchBox from "@/components/search/SearchBox";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,13 +44,8 @@ export default function Navbar() {
 
           {/* Search and Auth */}
           <div className="hidden md:flex items-center space-x-4">
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search courses..."
-                className="w-[200px] lg:w-[300px] pl-8"
-              />
+            <div className="w-[200px] lg:w-[300px]">
+              <SearchBox variant="command" />
             </div>
 
             {isLoggedIn ? (
@@ -86,9 +81,10 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <div className="flex md:hidden">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary hover:bg-muted"
+            <Button
+              variant="ghost"
+              size="icon"
+              className="inline-flex items-center justify-center rounded-md text-foreground hover:text-primary hover:bg-muted"
               onClick={toggleMenu}
             >
               {isMenuOpen ? (
@@ -96,7 +92,7 @@ export default function Navbar() {
               ) : (
                 <Menu className="block h-6 w-6" aria-hidden="true" />
               )}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -104,6 +100,9 @@ export default function Navbar() {
       {/* Mobile menu, show/hide based on menu state */}
       {isMenuOpen && (
         <div className="md:hidden">
+          <div className="p-2">
+            <SearchBox placeholder="Search courses..." />
+          </div>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
               to="/courses"

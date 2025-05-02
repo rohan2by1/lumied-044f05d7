@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,6 +29,7 @@ import { courses } from "@/data/mockData";
 import { Course } from "@/types";
 
 export default function Courses() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [filteredCourses, setFilteredCourses] = useState<Course[]>(courses);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -40,13 +41,22 @@ export default function Courses() {
   const categories = Array.from(new Set(courses.map(course => course.category)));
   
   useEffect(() => {
+    // Check for search query in URL
+    const urlSearchQuery = searchParams.get('search');
+    if (urlSearchQuery) {
+      setSearchTerm(urlSearchQuery);
+    }
+  }, [searchParams]);
+  
+  useEffect(() => {
     let results = courses;
     
     // Apply search filter
     if (searchTerm) {
       results = results.filter(course => 
         course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        course.description.toLowerCase().includes(searchTerm.toLowerCase())
+        course.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        course.category.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
     
@@ -75,7 +85,14 @@ export default function Courses() {
     }
     
     setFilteredCourses(results);
-  }, [searchTerm, selectedCategory, selectedLevel, priceRange, ratings]);
+    
+    // Update URL with search params
+    if (searchTerm) {
+      setSearchParams({ search: searchTerm });
+    } else {
+      setSearchParams({});
+    }
+  }, [searchTerm, selectedCategory, selectedLevel, priceRange, ratings, setSearchParams]);
   
   const handleRatingChange = (value: string) => {
     setRatings(
@@ -83,6 +100,15 @@ export default function Courses() {
         ? ratings.filter(r => r !== value)
         : [...ratings, value]
     );
+  };
+
+  const clearFilters = () => {
+    setSearchTerm("");
+    setSelectedCategory("all");
+    setSelectedLevel("all");
+    setPriceRange([0, 100]);
+    setRatings([]);
+    setSearchParams({});
   };
 
   return (
@@ -194,13 +220,11 @@ export default function Courses() {
                   </div>
                 </div>
                 
-                <Button variant="outline" className="w-full" onClick={() => {
-                  setSearchTerm("");
-                  setSelectedCategory("all");
-                  setSelectedLevel("all");
-                  setPriceRange([0, 100]);
-                  setRatings([]);
-                }}>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  onClick={clearFilters}
+                >
                   Clear Filters
                 </Button>
               </CardContent>
@@ -210,7 +234,9 @@ export default function Courses() {
           {/* Course Grid */}
           <div className="w-full md:w-3/4">
             <div className="flex justify-between items-center mb-6">
-              <h1 className="text-2xl font-bold">All Courses</h1>
+              <h1 className="text-2xl font-bold">
+                {searchTerm ? `Search Results: "${searchTerm}"` : "All Courses"}
+              </h1>
               <p className="text-muted-foreground">{filteredCourses.length} courses found</p>
             </div>
             
@@ -269,13 +295,7 @@ export default function Courses() {
                 <p className="text-muted-foreground mb-6">
                   Try adjusting your filters or search term
                 </p>
-                <Button onClick={() => {
-                  setSearchTerm("");
-                  setSelectedCategory("all");
-                  setSelectedLevel("all");
-                  setPriceRange([0, 100]);
-                  setRatings([]);
-                }}>
+                <Button onClick={clearFilters}>
                   Clear Filters
                 </Button>
               </div>
