@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -30,14 +31,20 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
+            <Link to="/" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent/10">
+              Home
+            </Link>
             <Link to="/courses" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent/10">
               Courses
             </Link>
-            <Link to="/about" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent/10">
-              About
+            <Link to="/community" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent/10">
+              Community
             </Link>
             <Link to="/contact" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent/10">
-              Contact
+              Contact Us
+            </Link>
+            <Link to="/about" className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent/10">
+              About Us
             </Link>
           </nav>
 
@@ -104,6 +111,13 @@ export default function Navbar() {
           </div>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
+              to="/"
+              className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent/10"
+              onClick={toggleMenu}
+            >
+              Home
+            </Link>
+            <Link
               to="/courses"
               className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent/10"
               onClick={toggleMenu}
@@ -111,18 +125,25 @@ export default function Navbar() {
               Courses
             </Link>
             <Link
-              to="/about"
+              to="/community"
               className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent/10"
               onClick={toggleMenu}
             >
-              About
+              Community
             </Link>
             <Link
               to="/contact"
               className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent/10"
               onClick={toggleMenu}
             >
-              Contact
+              Contact Us
+            </Link>
+            <Link
+              to="/about"
+              className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-accent/10"
+              onClick={toggleMenu}
+            >
+              About Us
             </Link>
           </div>
           <div className="pt-4 pb-3 border-t border-border">

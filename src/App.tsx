@@ -20,6 +20,11 @@ import CourseContent from "./pages/learning/CourseContent";
 import StudentDashboard from "./pages/dashboard/StudentDashboard";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 
+// New Pages
+import Community from "./pages/Community";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -44,6 +49,11 @@ const App = () => (
           {/* Dashboard Routes */}
           <Route path="/dashboard" element={<StudentDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          
+          {/* New Routes */}
+          <Route path="/community" element={<Community />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
           
           {/* 404 Route */}
           <Route path="*" element={<NotFound />} />
