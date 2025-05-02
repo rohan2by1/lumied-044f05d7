@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -45,7 +44,7 @@ export default function Navbar() {
           {/* Search and Auth */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="w-[200px] lg:w-[300px]">
-              <SearchBox variant="command" />
+              <SearchBox />
             </div>
 
             {isLoggedIn ? (
