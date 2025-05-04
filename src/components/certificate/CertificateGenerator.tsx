@@ -52,7 +52,7 @@ export default function CertificateGenerator({
             {/* Certificate content */}
             <div className="mb-6">
               <div className="flex items-center justify-center">
-                <h2 className="font-bold text-2xl text-primary">LearnFlow</h2>
+                <h2 className="font-bold text-2xl text-primary">LumiED</h2>
               </div>
             </div>
             

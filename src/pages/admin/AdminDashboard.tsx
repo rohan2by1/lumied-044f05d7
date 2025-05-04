@@ -78,10 +78,10 @@ export default function AdminDashboard() {
           <SidebarHeader className="px-6 py-4 border-b">
             <div className="flex items-center">
               <BookOpen className="h-6 w-6 text-primary mr-2" />
-              <span className="font-bold text-lg">LearnFlow Admin</span>
+              <span className="font-bold text-lg">LumiED Admin</span>
             </div>
           </SidebarHeader>
-          
+
           <SidebarContent className="py-4">
             <SidebarMenu>
               <SidebarMenuItem>
@@ -131,7 +131,7 @@ export default function AdminDashboard() {
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarContent>
-          
+
           <SidebarFooter className="px-4 py-4 border-t">
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center">
@@ -141,7 +141,9 @@ export default function AdminDashboard() {
                 </Avatar>
                 <div>
                   <p className="text-sm font-medium">Admin User</p>
-                  <p className="text-xs text-muted-foreground">admin@example.com</p>
+                  <p className="text-xs text-muted-foreground">
+                    admin@example.com
+                  </p>
                 </div>
               </div>
             </div>
@@ -153,7 +155,7 @@ export default function AdminDashboard() {
             </Button>
           </SidebarFooter>
         </Sidebar>
-        
+
         {/* Main Content */}
         <div className="flex-1 flex flex-col">
           {/* Top Header */}
@@ -173,7 +175,7 @@ export default function AdminDashboard() {
                   {activeTab === "settings" && "System Settings"}
                 </h1>
               </div>
-              
+
               <div className="flex items-center space-x-4">
                 <div className="relative">
                   <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -192,7 +194,7 @@ export default function AdminDashboard() {
               </div>
             </div>
           </header>
-          
+
           {/* Dashboard Content */}
           <div className="flex-1 overflow-auto p-6">
             {activeTab === "overview" && (
@@ -205,7 +207,9 @@ export default function AdminDashboard() {
                         <div>
                           <p className="text-muted-foreground">Total Users</p>
                           <h3 className="text-3xl font-bold mt-1">1,248</h3>
-                          <p className="text-sm text-green-600 mt-1">+12% this month</p>
+                          <p className="text-sm text-green-600 mt-1">
+                            +12% this month
+                          </p>
                         </div>
                         <div className="rounded-full bg-primary/10 p-3">
                           <Users className="h-6 w-6 text-primary" />
@@ -217,9 +221,13 @@ export default function AdminDashboard() {
                     <CardContent className="pt-6">
                       <div className="flex justify-between items-center">
                         <div>
-                          <p className="text-muted-foreground">Active Courses</p>
+                          <p className="text-muted-foreground">
+                            Active Courses
+                          </p>
                           <h3 className="text-3xl font-bold mt-1">48</h3>
-                          <p className="text-sm text-green-600 mt-1">+3 new this week</p>
+                          <p className="text-sm text-green-600 mt-1">
+                            +3 new this week
+                          </p>
                         </div>
                         <div className="rounded-full bg-primary/10 p-3">
                           <BookOpen className="h-6 w-6 text-primary" />
@@ -233,7 +241,9 @@ export default function AdminDashboard() {
                         <div>
                           <p className="text-muted-foreground">Enrollments</p>
                           <h3 className="text-3xl font-bold mt-1">6,842</h3>
-                          <p className="text-sm text-green-600 mt-1">+24% this month</p>
+                          <p className="text-sm text-green-600 mt-1">
+                            +24% this month
+                          </p>
                         </div>
                         <div className="rounded-full bg-primary/10 p-3">
                           <School className="h-6 w-6 text-primary" />
@@ -247,7 +257,9 @@ export default function AdminDashboard() {
                         <div>
                           <p className="text-muted-foreground">Revenue</p>
                           <h3 className="text-3xl font-bold mt-1">$24,980</h3>
-                          <p className="text-sm text-green-600 mt-1">+8% this month</p>
+                          <p className="text-sm text-green-600 mt-1">
+                            +8% this month
+                          </p>
                         </div>
                         <div className="rounded-full bg-primary/10 p-3">
                           <TrendingUp className="h-6 w-6 text-primary" />
@@ -256,40 +268,48 @@ export default function AdminDashboard() {
                     </CardContent>
                   </Card>
                 </div>
-                
+
                 {/* Charts */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <Card>
                     <CardHeader>
                       <CardTitle>Enrollment Statistics</CardTitle>
-                      <CardDescription>Monthly enrollment trends</CardDescription>
+                      <CardDescription>
+                        Monthly enrollment trends
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="h-[300px] flex items-center justify-center">
                         <div className="text-muted-foreground flex flex-col items-center">
                           <BarChart2 className="h-16 w-16 opacity-50" />
-                          <p className="mt-2">Enrollment statistics chart would render here</p>
+                          <p className="mt-2">
+                            Enrollment statistics chart would render here
+                          </p>
                         </div>
                       </div>
                     </CardContent>
                   </Card>
-                  
+
                   <Card>
                     <CardHeader>
                       <CardTitle>Course Categories</CardTitle>
-                      <CardDescription>Distribution by category</CardDescription>
+                      <CardDescription>
+                        Distribution by category
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="h-[300px] flex items-center justify-center">
                         <div className="text-muted-foreground flex flex-col items-center">
                           <PieChart className="h-16 w-16 opacity-50" />
-                          <p className="mt-2">Category distribution chart would render here</p>
+                          <p className="mt-2">
+                            Category distribution chart would render here
+                          </p>
                         </div>
                       </div>
                     </CardContent>
                   </Card>
                 </div>
-                
+
                 {/* Recent Activity */}
                 <Card>
                   <CardHeader>
@@ -318,7 +338,9 @@ export default function AdminDashboard() {
                           </TableCell>
                           <TableCell>Enrolled in "Web Development"</TableCell>
                           <TableCell>Today, 10:30 AM</TableCell>
-                          <TableCell><Badge>Completed</Badge></TableCell>
+                          <TableCell>
+                            <Badge>Completed</Badge>
+                          </TableCell>
                         </TableRow>
                         <TableRow>
                           <TableCell>
@@ -332,7 +354,9 @@ export default function AdminDashboard() {
                           </TableCell>
                           <TableCell>Added new course "Data Science"</TableCell>
                           <TableCell>Today, 9:15 AM</TableCell>
-                          <TableCell><Badge>Published</Badge></TableCell>
+                          <TableCell>
+                            <Badge>Published</Badge>
+                          </TableCell>
                         </TableRow>
                         <TableRow>
                           <TableCell>
@@ -344,9 +368,13 @@ export default function AdminDashboard() {
                               <span>Robert Johnson</span>
                             </div>
                           </TableCell>
-                          <TableCell>Completed "UX Design Principles"</TableCell>
+                          <TableCell>
+                            Completed "UX Design Principles"
+                          </TableCell>
                           <TableCell>Yesterday, 4:23 PM</TableCell>
-                          <TableCell><Badge variant="outline">Awarded Certificate</Badge></TableCell>
+                          <TableCell>
+                            <Badge variant="outline">Awarded Certificate</Badge>
+                          </TableCell>
                         </TableRow>
                       </TableBody>
                     </Table>
@@ -354,30 +382,37 @@ export default function AdminDashboard() {
                 </Card>
               </div>
             )}
-            
+
             {activeTab === "courses" && (
               <div className="space-y-6">
                 <div className="flex justify-between items-center">
                   <div>
                     <h2 className="text-2xl font-bold">Courses</h2>
-                    <p className="text-muted-foreground">Manage your course catalog</p>
+                    <p className="text-muted-foreground">
+                      Manage your course catalog
+                    </p>
                   </div>
                   <Button>
                     <PlusCircle className="h-4 w-4 mr-2" />
                     Add New Course
                   </Button>
                 </div>
-                
+
                 <div className="flex justify-between items-center">
                   <div className="flex gap-2">
-                    <Input placeholder="Search courses..." className="w-[300px]" />
+                    <Input
+                      placeholder="Search courses..."
+                      className="w-[300px]"
+                    />
                     <Button variant="outline">Filter</Button>
                   </div>
                   <div>
-                    <p className="text-muted-foreground text-sm">{courses.length} courses total</p>
+                    <p className="text-muted-foreground text-sm">
+                      {courses.length} courses total
+                    </p>
                   </div>
                 </div>
-                
+
                 <div>
                   <Table>
                     <TableHeader>
@@ -397,20 +432,24 @@ export default function AdminDashboard() {
                           <TableCell>
                             <div className="flex items-center gap-3">
                               <div className="h-12 w-16 rounded overflow-hidden">
-                                <img 
-                                  src={course.thumbnail} 
-                                  alt={course.title} 
+                                <img
+                                  src={course.thumbnail}
+                                  alt={course.title}
                                   className="h-full w-full object-cover"
                                 />
                               </div>
-                              <span className="font-medium">{course.title}</span>
+                              <span className="font-medium">
+                                {course.title}
+                              </span>
                             </div>
                           </TableCell>
                           <TableCell>
                             <div className="flex items-center gap-2">
                               <Avatar className="h-8 w-8">
                                 <AvatarImage src={course.instructor.avatar} />
-                                <AvatarFallback>{course.instructor.name[0]}</AvatarFallback>
+                                <AvatarFallback>
+                                  {course.instructor.name[0]}
+                                </AvatarFallback>
                               </Avatar>
                               <span>{course.instructor.name}</span>
                             </div>
@@ -443,27 +482,29 @@ export default function AdminDashboard() {
                 </div>
               </div>
             )}
-            
+
             {activeTab === "users" && (
               <div className="space-y-6">
                 <div className="flex justify-between items-center">
                   <div>
                     <h2 className="text-2xl font-bold">Users</h2>
-                    <p className="text-muted-foreground">Manage users and permissions</p>
+                    <p className="text-muted-foreground">
+                      Manage users and permissions
+                    </p>
                   </div>
                   <Button>
                     <PlusCircle className="h-4 w-4 mr-2" />
                     Add New User
                   </Button>
                 </div>
-                
+
                 <Tabs defaultValue="students">
                   <TabsList>
                     <TabsTrigger value="students">Students</TabsTrigger>
                     <TabsTrigger value="instructors">Instructors</TabsTrigger>
                     <TabsTrigger value="admins">Admins</TabsTrigger>
                   </TabsList>
-                  
+
                   <TabsContent value="students" className="mt-6">
                     <Table>
                       <TableHeader>
@@ -477,38 +518,44 @@ export default function AdminDashboard() {
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        {users.filter(user => user.role === "student").map((user) => (
-                          <TableRow key={user.id}>
-                            <TableCell>
-                              <div className="flex items-center gap-2">
-                                <Avatar className="h-8 w-8">
-                                  <AvatarImage src={user.avatar} />
-                                  <AvatarFallback>{user.name[0]}</AvatarFallback>
-                                </Avatar>
-                                <span className="font-medium">{user.name}</span>
-                              </div>
-                            </TableCell>
-                            <TableCell>{user.email}</TableCell>
-                            <TableCell>3</TableCell>
-                            <TableCell>Jan 15, 2023</TableCell>
-                            <TableCell>
-                              <Badge variant="outline">Active</Badge>
-                            </TableCell>
-                            <TableCell className="text-right">
-                              <div className="flex justify-end gap-2">
-                                <Button size="sm" variant="ghost">
-                                  <User className="h-4 w-4" />
-                                </Button>
-                                <Button size="sm" variant="ghost">
-                                  <Mail className="h-4 w-4" />
-                                </Button>
-                                <Button size="sm" variant="ghost">
-                                  <Edit className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </TableCell>
-                          </TableRow>
-                        ))}
+                        {users
+                          .filter((user) => user.role === "student")
+                          .map((user) => (
+                            <TableRow key={user.id}>
+                              <TableCell>
+                                <div className="flex items-center gap-2">
+                                  <Avatar className="h-8 w-8">
+                                    <AvatarImage src={user.avatar} />
+                                    <AvatarFallback>
+                                      {user.name[0]}
+                                    </AvatarFallback>
+                                  </Avatar>
+                                  <span className="font-medium">
+                                    {user.name}
+                                  </span>
+                                </div>
+                              </TableCell>
+                              <TableCell>{user.email}</TableCell>
+                              <TableCell>3</TableCell>
+                              <TableCell>Jan 15, 2023</TableCell>
+                              <TableCell>
+                                <Badge variant="outline">Active</Badge>
+                              </TableCell>
+                              <TableCell className="text-right">
+                                <div className="flex justify-end gap-2">
+                                  <Button size="sm" variant="ghost">
+                                    <User className="h-4 w-4" />
+                                  </Button>
+                                  <Button size="sm" variant="ghost">
+                                    <Mail className="h-4 w-4" />
+                                  </Button>
+                                  <Button size="sm" variant="ghost">
+                                    <Edit className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              </TableCell>
+                            </TableRow>
+                          ))}
                         <TableRow>
                           <TableCell>
                             <div className="flex items-center gap-2">
@@ -516,7 +563,9 @@ export default function AdminDashboard() {
                                 <AvatarImage src="https://i.pravatar.cc/150?img=4" />
                                 <AvatarFallback>RJ</AvatarFallback>
                               </Avatar>
-                              <span className="font-medium">Robert Johnson</span>
+                              <span className="font-medium">
+                                Robert Johnson
+                              </span>
                             </div>
                           </TableCell>
                           <TableCell>robert@example.com</TableCell>
@@ -542,7 +591,7 @@ export default function AdminDashboard() {
                       </TableBody>
                     </Table>
                   </TabsContent>
-                  
+
                   <TabsContent value="instructors" className="mt-6">
                     <Table>
                       <TableHeader>
@@ -556,45 +605,51 @@ export default function AdminDashboard() {
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        {users.filter(user => user.role === "instructor").map((user) => (
-                          <TableRow key={user.id}>
-                            <TableCell>
-                              <div className="flex items-center gap-2">
-                                <Avatar className="h-8 w-8">
-                                  <AvatarImage src={user.avatar} />
-                                  <AvatarFallback>{user.name[0]}</AvatarFallback>
-                                </Avatar>
-                                <span className="font-medium">{user.name}</span>
-                              </div>
-                            </TableCell>
-                            <TableCell>{user.email}</TableCell>
-                            <TableCell>6</TableCell>
-                            <TableCell>2,486</TableCell>
-                            <TableCell>
-                              <div className="flex items-center">
-                                <Star className="h-4 w-4 fill-yellow-400 stroke-yellow-400 mr-1" />
-                                <span>4.8</span>
-                              </div>
-                            </TableCell>
-                            <TableCell className="text-right">
-                              <div className="flex justify-end gap-2">
-                                <Button size="sm" variant="ghost">
-                                  <User className="h-4 w-4" />
-                                </Button>
-                                <Button size="sm" variant="ghost">
-                                  <Mail className="h-4 w-4" />
-                                </Button>
-                                <Button size="sm" variant="ghost">
-                                  <Edit className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </TableCell>
-                          </TableRow>
-                        ))}
+                        {users
+                          .filter((user) => user.role === "instructor")
+                          .map((user) => (
+                            <TableRow key={user.id}>
+                              <TableCell>
+                                <div className="flex items-center gap-2">
+                                  <Avatar className="h-8 w-8">
+                                    <AvatarImage src={user.avatar} />
+                                    <AvatarFallback>
+                                      {user.name[0]}
+                                    </AvatarFallback>
+                                  </Avatar>
+                                  <span className="font-medium">
+                                    {user.name}
+                                  </span>
+                                </div>
+                              </TableCell>
+                              <TableCell>{user.email}</TableCell>
+                              <TableCell>6</TableCell>
+                              <TableCell>2,486</TableCell>
+                              <TableCell>
+                                <div className="flex items-center">
+                                  <Star className="h-4 w-4 fill-yellow-400 stroke-yellow-400 mr-1" />
+                                  <span>4.8</span>
+                                </div>
+                              </TableCell>
+                              <TableCell className="text-right">
+                                <div className="flex justify-end gap-2">
+                                  <Button size="sm" variant="ghost">
+                                    <User className="h-4 w-4" />
+                                  </Button>
+                                  <Button size="sm" variant="ghost">
+                                    <Mail className="h-4 w-4" />
+                                  </Button>
+                                  <Button size="sm" variant="ghost">
+                                    <Edit className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              </TableCell>
+                            </TableRow>
+                          ))}
                       </TableBody>
                     </Table>
                   </TabsContent>
-                  
+
                   <TabsContent value="admins" className="mt-6">
                     <Table>
                       <TableHeader>
@@ -607,39 +662,45 @@ export default function AdminDashboard() {
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        {users.filter(user => user.role === "admin").map((user) => (
-                          <TableRow key={user.id}>
-                            <TableCell>
-                              <div className="flex items-center gap-2">
-                                <Avatar className="h-8 w-8">
-                                  <AvatarImage src={user.avatar} />
-                                  <AvatarFallback>{user.name[0]}</AvatarFallback>
-                                </Avatar>
-                                <span className="font-medium">{user.name}</span>
-                              </div>
-                            </TableCell>
-                            <TableCell>{user.email}</TableCell>
-                            <TableCell>Super Admin</TableCell>
-                            <TableCell>Just now</TableCell>
-                            <TableCell className="text-right">
-                              <div className="flex justify-end gap-2">
-                                <Button size="sm" variant="ghost">
-                                  <Settings className="h-4 w-4" />
-                                </Button>
-                                <Button size="sm" variant="ghost">
-                                  <Edit className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </TableCell>
-                          </TableRow>
-                        ))}
+                        {users
+                          .filter((user) => user.role === "admin")
+                          .map((user) => (
+                            <TableRow key={user.id}>
+                              <TableCell>
+                                <div className="flex items-center gap-2">
+                                  <Avatar className="h-8 w-8">
+                                    <AvatarImage src={user.avatar} />
+                                    <AvatarFallback>
+                                      {user.name[0]}
+                                    </AvatarFallback>
+                                  </Avatar>
+                                  <span className="font-medium">
+                                    {user.name}
+                                  </span>
+                                </div>
+                              </TableCell>
+                              <TableCell>{user.email}</TableCell>
+                              <TableCell>Super Admin</TableCell>
+                              <TableCell>Just now</TableCell>
+                              <TableCell className="text-right">
+                                <div className="flex justify-end gap-2">
+                                  <Button size="sm" variant="ghost">
+                                    <Settings className="h-4 w-4" />
+                                  </Button>
+                                  <Button size="sm" variant="ghost">
+                                    <Edit className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              </TableCell>
+                            </TableRow>
+                          ))}
                       </TableBody>
                     </Table>
                   </TabsContent>
                 </Tabs>
               </div>
             )}
-            
+
             {activeTab === "reports" && (
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold">Reports & Analytics</h2>
@@ -650,7 +711,7 @@ export default function AdminDashboard() {
                     <TabsTrigger value="user">User Activity</TabsTrigger>
                     <TabsTrigger value="course">Course Performance</TabsTrigger>
                   </TabsList>
-                  
+
                   <TabsContent value="enrollment" className="mt-6 space-y-6">
                     <Card>
                       <CardHeader>
@@ -662,11 +723,13 @@ export default function AdminDashboard() {
                       <CardContent className="h-[400px] flex items-center justify-center">
                         <div className="text-muted-foreground flex flex-col items-center">
                           <BarChart2 className="h-16 w-16 opacity-50" />
-                          <p className="mt-2">Enrollment statistics chart would render here</p>
+                          <p className="mt-2">
+                            Enrollment statistics chart would render here
+                          </p>
                         </div>
                       </CardContent>
                     </Card>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <Card>
                         <CardHeader>
@@ -685,15 +748,19 @@ export default function AdminDashboard() {
                               {courses.slice(0, 5).map((course) => (
                                 <TableRow key={course.id}>
                                   <TableCell>{course.title}</TableCell>
-                                  <TableCell>{course.enrolledStudents}</TableCell>
-                                  <TableCell className="text-green-600">+{Math.floor(Math.random() * 20) + 5}%</TableCell>
+                                  <TableCell>
+                                    {course.enrolledStudents}
+                                  </TableCell>
+                                  <TableCell className="text-green-600">
+                                    +{Math.floor(Math.random() * 20) + 5}%
+                                  </TableCell>
                                 </TableRow>
                               ))}
                             </TableBody>
                           </Table>
                         </CardContent>
                       </Card>
-                      
+
                       <Card>
                         <CardHeader>
                           <CardTitle>Enrollment by Category</CardTitle>
@@ -701,23 +768,29 @@ export default function AdminDashboard() {
                         <CardContent className="h-[300px] flex items-center justify-center">
                           <div className="text-muted-foreground flex flex-col items-center">
                             <PieChart className="h-16 w-16 opacity-50" />
-                            <p className="mt-2">Category distribution chart would render here</p>
+                            <p className="mt-2">
+                              Category distribution chart would render here
+                            </p>
                           </div>
                         </CardContent>
                       </Card>
                     </div>
                   </TabsContent>
-                  
+
                   <TabsContent value="revenue">
                     <div className="py-6">
-                      <h3 className="text-xl font-semibold mb-6">Revenue Analytics</h3>
-                      <p className="text-muted-foreground">Revenue reporting interface would be displayed here.</p>
+                      <h3 className="text-xl font-semibold mb-6">
+                        Revenue Analytics
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Revenue reporting interface would be displayed here.
+                      </p>
                     </div>
                   </TabsContent>
                 </Tabs>
               </div>
             )}
-            
+
             {activeTab === "settings" && (
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold">System Settings</h2>
@@ -725,10 +798,12 @@ export default function AdminDashboard() {
                   <TabsList>
                     <TabsTrigger value="general">General</TabsTrigger>
                     <TabsTrigger value="appearance">Appearance</TabsTrigger>
-                    <TabsTrigger value="notifications">Notifications</TabsTrigger>
+                    <TabsTrigger value="notifications">
+                      Notifications
+                    </TabsTrigger>
                     <TabsTrigger value="integrations">Integrations</TabsTrigger>
                   </TabsList>
-                  
+
                   <TabsContent value="general" className="mt-6">
                     <Card>
                       <CardHeader>

@@ -32,7 +32,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <BookOpen className="h-8 w-8 text-primary" />
-              <span className="ml-2 text-xl font-bold text-foreground">LearnFlow</span>
+              <span className="ml-2 text-xl font-bold text-foreground">LumiED</span>
             </Link>
           </div>
 

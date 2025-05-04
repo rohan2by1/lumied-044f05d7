@@ -280,10 +280,10 @@ export default function CourseContent() {
           <SidebarHeader className="px-4 py-3 border-b">
             <Link to="/" className="flex items-center">
               <BookOpen className="h-6 w-6 text-primary mr-2" />
-              <span className="font-bold text-lg">LearnFlow</span>
+              <span className="font-bold text-lg">LumiED</span>
             </Link>
           </SidebarHeader>
-          
+
           <SidebarContent>
             <div className="p-4 border-b">
               <h3 className="font-semibold text-lg truncate">{course.title}</h3>
@@ -294,7 +294,7 @@ export default function CourseContent() {
                 </span>
               </div>
             </div>
-            
+
             {/* Course Navigation */}
             <div className="py-4">
               <SidebarGroup>
@@ -310,7 +310,7 @@ export default function CourseContent() {
                           <SidebarMenuItem key={lesson.id}>
                             <SidebarMenuButton
                               className={`w-full justify-start ${
-                                modIndex === currentModuleIndex && 
+                                modIndex === currentModuleIndex &&
                                 lesIndex === currentLessonIndex
                                   ? "bg-accent"
                                   : ""
@@ -319,11 +319,19 @@ export default function CourseContent() {
                                   ? "text-primary"
                                   : ""
                               }`}
-                              onClick={() => handleLessonSelect(modIndex, lesIndex)}
+                              onClick={() =>
+                                handleLessonSelect(modIndex, lesIndex)
+                              }
                             >
-                              {lesson.type === "video" && <Play className="h-4 w-4 mr-2" />}
-                              {lesson.type === "text" && <BookOpen className="h-4 w-4 mr-2" />}
-                              {lesson.type === "quiz" && <BarChart2 className="h-4 w-4 mr-2" />}
+                              {lesson.type === "video" && (
+                                <Play className="h-4 w-4 mr-2" />
+                              )}
+                              {lesson.type === "text" && (
+                                <BookOpen className="h-4 w-4 mr-2" />
+                              )}
+                              {lesson.type === "quiz" && (
+                                <BarChart2 className="h-4 w-4 mr-2" />
+                              )}
                               <span className="truncate">{lesson.title}</span>
                               {completedLessons.includes(lesson.id) && (
                                 <CheckCircle className="h-4 w-4 ml-auto text-primary" />
@@ -337,7 +345,7 @@ export default function CourseContent() {
                 </SidebarGroupContent>
               </SidebarGroup>
             </div>
-            
+
             <div className="px-4 py-4 mt-auto border-t">
               <Button asChild variant="secondary" className="w-full">
                 <Link to={`/courses/${course.id}`}>
@@ -348,7 +356,7 @@ export default function CourseContent() {
             </div>
           </SidebarContent>
         </Sidebar>
-        
+
         {/* Main Content */}
         <div className="flex-1 flex flex-col min-h-screen">
           {/* Top Header */}
@@ -359,12 +367,17 @@ export default function CourseContent() {
                   <Menu className="h-5 w-5" />
                 </SidebarTrigger>
                 <div className="ml-4">
-                  <h2 className="text-lg font-semibold truncate">{currentLesson.title}</h2>
+                  <h2 className="text-lg font-semibold truncate">
+                    {currentLesson.title}
+                  </h2>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-4">
-                <Link to="/dashboard" className="text-sm text-muted-foreground hover:text-foreground flex items-center">
+                <Link
+                  to="/dashboard"
+                  className="text-sm text-muted-foreground hover:text-foreground flex items-center"
+                >
                   <Home className="h-4 w-4 mr-1" />
                   Dashboard
                 </Link>
@@ -385,31 +398,29 @@ export default function CourseContent() {
               </div>
             </div>
           </header>
-          
+
           {/* Content Area */}
           <div className="flex-1 overflow-auto">
             <div className="max-w-4xl mx-auto py-8 px-4">
-              <div className="mb-8">
-                {renderLessonContent()}
-              </div>
-              
+              <div className="mb-8">{renderLessonContent()}</div>
+
               <Tabs defaultValue="discussion">
                 <TabsList>
                   <TabsTrigger value="discussion">Discussion</TabsTrigger>
                   <TabsTrigger value="notes">Notes</TabsTrigger>
                 </TabsList>
-                
+
                 <TabsContent value="discussion" className="pt-6">
                   <h3 className="text-xl font-semibold mb-4">Discussion</h3>
-                  
+
                   <div className="flex mb-6">
                     <Avatar className="h-10 w-10 mr-3">
                       <AvatarImage src="https://i.pravatar.cc/150?img=1" />
                       <AvatarFallback>JD</AvatarFallback>
                     </Avatar>
                     <div className="flex-1">
-                      <Textarea 
-                        placeholder="Add your comment..." 
+                      <Textarea
+                        placeholder="Add your comment..."
                         value={commentText}
                         onChange={(e) => setCommentText(e.target.value)}
                         className="mb-2"
@@ -420,25 +431,33 @@ export default function CourseContent() {
                       </Button>
                     </div>
                   </div>
-                  
+
                   <Separator className="my-6" />
-                  
+
                   <div className="space-y-6">
                     {lessonComments.length > 0 ? (
                       lessonComments.map((comment) => (
                         <div key={comment.id} className="flex">
                           <Avatar className="h-10 w-10 mr-3">
                             <AvatarImage src={comment.user.avatar} />
-                            <AvatarFallback>{comment.user.name[0]}</AvatarFallback>
+                            <AvatarFallback>
+                              {comment.user.name[0]}
+                            </AvatarFallback>
                           </Avatar>
                           <div>
                             <div className="flex items-center mb-1">
-                              <h4 className="font-medium">{comment.user.name}</h4>
+                              <h4 className="font-medium">
+                                {comment.user.name}
+                              </h4>
                               <span className="text-xs text-muted-foreground ml-2">
-                                {new Date(comment.createdAt).toLocaleDateString()}
+                                {new Date(
+                                  comment.createdAt
+                                ).toLocaleDateString()}
                               </span>
                             </div>
-                            <p className="text-muted-foreground">{comment.content}</p>
+                            <p className="text-muted-foreground">
+                              {comment.content}
+                            </p>
                             <div className="flex items-center mt-2 space-x-4">
                               <button className="text-xs text-muted-foreground flex items-center hover:text-foreground">
                                 <MessageSquare className="h-3 w-3 mr-1" />
@@ -449,23 +468,31 @@ export default function CourseContent() {
                                 Helpful
                               </button>
                             </div>
-                            
+
                             {comment.replies && comment.replies.length > 0 && (
                               <div className="ml-6 mt-4 space-y-4">
                                 {comment.replies.map((reply) => (
                                   <div key={reply.id} className="flex">
                                     <Avatar className="h-8 w-8 mr-3">
                                       <AvatarImage src={reply.user.avatar} />
-                                      <AvatarFallback>{reply.user.name[0]}</AvatarFallback>
+                                      <AvatarFallback>
+                                        {reply.user.name[0]}
+                                      </AvatarFallback>
                                     </Avatar>
                                     <div>
                                       <div className="flex items-center mb-1">
-                                        <h4 className="text-sm font-medium">{reply.user.name}</h4>
+                                        <h4 className="text-sm font-medium">
+                                          {reply.user.name}
+                                        </h4>
                                         <span className="text-xs text-muted-foreground ml-2">
-                                          {new Date(reply.createdAt).toLocaleDateString()}
+                                          {new Date(
+                                            reply.createdAt
+                                          ).toLocaleDateString()}
                                         </span>
                                       </div>
-                                      <p className="text-sm text-muted-foreground">{reply.content}</p>
+                                      <p className="text-sm text-muted-foreground">
+                                        {reply.content}
+                                      </p>
                                     </div>
                                   </div>
                                 ))}
@@ -477,16 +504,18 @@ export default function CourseContent() {
                     ) : (
                       <div className="text-center py-8">
                         <MessageSquare className="h-12 w-12 mx-auto text-muted-foreground opacity-50" />
-                        <p className="mt-2 text-muted-foreground">No comments yet. Be the first to start the discussion!</p>
+                        <p className="mt-2 text-muted-foreground">
+                          No comments yet. Be the first to start the discussion!
+                        </p>
                       </div>
                     )}
                   </div>
                 </TabsContent>
-                
+
                 <TabsContent value="notes" className="pt-6">
                   <h3 className="text-xl font-semibold mb-4">Your Notes</h3>
-                  <Textarea 
-                    placeholder="Take notes for this lesson..." 
+                  <Textarea
+                    placeholder="Take notes for this lesson..."
                     className="min-h-[200px]"
                   />
                   <Button className="mt-4">Save Notes</Button>
@@ -494,7 +523,7 @@ export default function CourseContent() {
               </Tabs>
             </div>
           </div>
-          
+
           {/* Navigation Footer */}
           <footer className="border-t py-4 px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky bottom-0 z-10">
             <div className="flex justify-between items-center">
@@ -506,16 +535,15 @@ export default function CourseContent() {
                 <ChevronLeft className="mr-2 h-4 w-4" />
                 Previous Lesson
               </Button>
-              
+
               <div className="text-sm text-muted-foreground">
                 {currentLessonFlatIndex + 1} of {allLessons.length} lessons
               </div>
-              
-              <Button
-                onClick={handleNextLesson}
-                disabled={!hasNext}
-              >
-                {currentLesson.type === "quiz" ? "Complete Quiz" : "Next Lesson"}
+
+              <Button onClick={handleNextLesson} disabled={!hasNext}>
+                {currentLesson.type === "quiz"
+                  ? "Complete Quiz"
+                  : "Next Lesson"}
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
